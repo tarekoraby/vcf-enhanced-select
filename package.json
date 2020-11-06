@@ -21,7 +21,7 @@
   "scripts": {
     "test": "wct",
     "lint": "eslint src/*.js",
-    "prestart": "polymer analyze src/*.js > analysis.json",
+    "prestart": "polymer analyze src/*.js theme/lumo/*.js > analysis.json",
     "start": "polymer serve -o",
     "build:prod": "run-s build:api build:demo",
     "build:api": "npm run prestart && polymer build",
@@ -42,10 +42,19 @@
   },
   "dependencies": {
     "@polymer/polymer": "3.2.0",
-    "@vaadin/vaadin-element-mixin": "^2.1.3",
     "@vaadin/vaadin-license-checker": "^2.1.2",
-    "@vaadin/vaadin-lumo-styles": "^1.5.0",
-    "@vaadin/vaadin-themable-mixin": "^1.5.1"
+    "@polymer/iron-media-query": "^3.0.0",
+    "@polymer/iron-resizable-behavior": "^3.0.0",
+    "@vaadin/vaadin-control-state-mixin": "^2.2.1",
+    "@vaadin/vaadin-themable-mixin": "^1.6.1",
+    "@vaadin/vaadin-text-field": "^2.8.0",
+    "@vaadin/vaadin-list-box": "^1.4.0",
+    "@vaadin/vaadin-list-mixin": "^2.5.0",
+    "@vaadin/vaadin-item": "^2.3.0",
+    "@vaadin/vaadin-overlay": "^3.5.0",
+    "@vaadin/vaadin-lumo-styles": "^1.6.0",
+    "@vaadin/vaadin-material-styles": "^1.3.2",
+    "@vaadin/vaadin-element-mixin": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -94,7 +103,9 @@
     "url": "https://github.com/vaadin-component-factory/vcf-enhanced-select/issues"
   },
   "files": [
-    "src"
+    "src",
+    "vaadin-*.js",
+    "theme"
   ],
   "homepage": "https://github.com/vaadin-component-factory/vcf-enhanced-select#readme",
   "directories": {

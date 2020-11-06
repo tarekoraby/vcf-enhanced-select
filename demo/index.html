@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -104,9 +104,24 @@
           <template>
             <vcf-enhanced-select></vcf-enhanced-select>
             <script>
-              window.addEventListener('WebComponentsReady', () => {
-                // Example 1
-              });
+                  window.addEventListener('WebComponentsReady', function() {
+                    document.querySelector('vcf-enhanced-select').renderer = function(root) {
+                      // Check if there is a list-box generated with the previous renderer call to update its content instead of recreation
+                      if (root.firstChild) {
+                        return;
+                      }
+                      // create the <vaadin-list-box>
+                      const listBox = window.document.createElement('vaadin-list-box');
+                      // append 3 <vaadin-item> elements
+                      ['Jose', 'Manolo', 'Pedro'].forEach(function(name) {
+                        const item = window.document.createElement('vaadin-item');
+                        item.textContent = name;
+                        listBox.appendChild(item);
+                      });
+                      // update the content
+                      root.appendChild(listBox);
+                    };
+                  });
             </script>
           </template>
         </demo-snippet>
